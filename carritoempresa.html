@@ -1,0 +1,110 @@
+<html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Carrito | The Cookie Doc's Shop</title>
+  <style>
+    body{font-family:Arial, sans-serif;background:#fff0f5;margin:0;padding:20px;}
+    h1{text-align:center;margin-bottom:30px;}
+    table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+    th,td{border-bottom:1px solid #ccc;padding:10px;text-align:center;}
+    th{background:#78abff;color:#fff;}
+    .btn{padding:4px 8px;border:none;border-radius:4px;cursor:pointer;}
+    .minus{background:#ff6666;color:#fff;}
+    .plus{background:#78abff;color:#fff;}
+    .remove{background:#333;color:#fff;}
+    #back{display:inline-block;margin-top:10px;color:#78abff;text-decoration:none;font-weight:bold;}
+    #vaciar{background:#999;color:#fff;}
+  </style>
+</head>
+<body>
+
+  <h1>🛒 Mi carrito</h1>
+
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h3 id="total">Total: $0</h3>
+  <button id="vaciar" class="btn" onclick="vaciarCarrito()">Vaciar carrito</button>
+  <br/>
+  <a id="back" href="The Cookie Doc's Shop.html">← Seguir comprando</a>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function saveAndRender() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function addOne(name) {
+      const item = cart.find(p => p.name === name);
+      if (item) item.quantity++;
+      saveAndRender();
+    }
+
+    function removeOne(name) {
+      const index = cart.findIndex(p => p.name === name);
+      if (index > -1){
+        cart[index].quantity--;
+        if (cart[index].quantity === 0) cart.splice(index,1);
+        saveAndRender();
+      }
+    }
+
+    function eliminarProducto(name){
+      cart = cart.filter(p => p.name !== name);
+      saveAndRender();
+    }
+
+    function vaciarCarrito(){
+      if(confirm("¿Seguro que deseas vaciar el carrito?")){
+        cart = [];
+        saveAndRender();
+      }
+    }
+
+    function renderCart(){
+      const tbody = document.querySelector('#cart-table tbody');
+      tbody.innerHTML = '';
+      let total = 0;
+
+      if(cart.length === 0){
+        tbody.innerHTML = '<tr><td colspan="5">Tu carrito está vacío</td></tr>';
+      } else {
+        cart.forEach(item =>{
+          const subtotal = item.price * item.quantity;
+          total += subtotal;
+          tbody.innerHTML += `
+            <tr>
+              <td>${item.name}</td>
+              <td>$${item.price}</td>
+              <td>${item.quantity}</td>
+              <td>$${subtotal}</td>
+              <td>
+                <button class="btn plus" onclick="addOne('${item.name}')">+</button>
+                <button class="btn minus" onclick="removeOne('${item.name}')">-</button>
+                <button class="btn remove" onclick="eliminarProducto('${item.name}')">Quitar</button>
+              </td>
+            </tr>`;
+        });
+      }
+
+      document.getElementById('total').innerText = 'Total: $' + total;
+    }
+
+    // Renderizar al cargar
+    renderCart();
+  </script>
+</body>
+</html>

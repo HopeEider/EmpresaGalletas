@@ -1,0 +1,236 @@
+<html>
+<head>
+	<Center><Title><Empresa></Title></Center>
+</head>
+<body bgcolor= "#ffb8fa">
+<div style="width: 100%; background-color: #adfffa; text-align: center; padding: 20px 0;">
+  <center><img src="logo empresa.jpg" style="width: 600px;"></center>
+</div>
+<div style="width: 100%; background-color: #bdb8ff; padding: 5px 0;">
+<marquee behavior="scroll" direction="left" scrollamount="10" style="font-size: 18px; color: #ffffff;">
+  🍪¡Bienvenidos a The Cookie Doc's Shop!💖
+</marquee>
+</div>
+</body> 
+</html>
+
+<html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Menú</title>
+
+  <!-- ===== ESTILOS ===== -->
+  <style>
+    /* ---------- RESET BÁSICO ---------- */
+    *, *::before, *::after {box-sizing: border-box; margin: 0; padding: 0;}
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffb8fa;             /* fondo rosado */
+      padding: 90px 20px 40px;         /* deja espacio para el header fijo */
+    }
+
+    h1 {text-align: center; margin-bottom: 30px;}
+
+    /* ---------- ENCABEZADO FIJO ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #78abff;
+      color: #ffffff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,.12);
+      z-index: 1000;
+    }
+
+    header nav {display: flex; gap: 15px; flex-wrap: wrap;}
+    header a {color: #ffffff; text-decoration: none; font-weight: bold;}
+
+    .badge {
+      background: #ffffff;
+      color: #78abff;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+
+    /* ---------- GRID DE PRODUCTOS ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.12);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .card .description {
+      font-size: 0.9rem;
+      color: #444444;
+      margin-bottom: 10px;
+      flex-grow: 1;                    /* empuja el botón al fondo */
+    }
+
+    .card .price {
+      font-weight: bold;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .btn {
+      background: #4a90e2;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+
+    .btn:hover {background: #357ab8;}
+  </style>
+</head>
+
+<body>
+
+  <!-- ---------- HEADER ---------- -->
+  <header>
+    <nav>
+      <a href="sobrenosotros.html">Sobre nosotros</a>
+      <a href="mi cuenta.html">Mi cuenta</a>
+    </nav>
+
+    <a href="carritoempresa.html">🛒 Carrito <span id="cart-count" class="badge">0</span></a>
+  </header>
+
+  <h1>Menú</h1>
+
+  <!-- ---------- PRODUCTOS ---------- -->
+  <section class="grid">
+
+    <!-- 1 -->
+    <article class="card">
+      <img src="galleta sin gluten.jpg" alt="Galleta sin gluten">
+      <h3>Galleta sin gluten</h3>
+      <p class="description">Ideal para personas con intolerancia al gluten. Paquete de 15 galletas.</p>
+      <p class="price">$35</p>
+      <button class="btn" onclick="addToCart('Galleta sin gluten', 35)">Agregar al carrito</button>
+    </article>
+
+    <!-- 2 -->
+    <article class="card">
+      <img src="galletas sin azucar.jpg" alt="Galleta sin azúcar">
+      <h3>Galleta sin azúcar</h3>
+      <p class="description">Especial para personas con diabetes o dietas bajas en azúcar. 15 piezas.</p>
+      <p class="price">$30</p>
+      <button class="btn" onclick="addToCart('Galleta sin azúcar', 30)">Agregar al carrito</button>
+    </article>
+
+    <!-- 3 -->
+    <article class="card">
+      <img src="galleta.jpg" alt="Galleta normal">
+      <h3>Galleta normal</h3>
+      <p class="description">La clásica galleta dulce para consentirte. Paquete de 15.</p>
+      <p class="price">$25</p>
+      <button class="btn" onclick="addToCart('Galleta normal', 25)">Agregar al carrito</button>
+    </article>
+
+    <!-- 4 -->
+    <article class="card">
+      <img src="Galleta cólicos.jpg" alt="Galleta para cólicos">
+      <h3>Galleta para cólicos</h3>
+      <p class="description">Ayuda a disminuir malestares menstruales. Paquete de 15.</p>
+      <p class="price">$38</p>
+      <button class="btn" onclick="addToCart('Galleta para aliviar cólicos', 38)">Agregar al carrito</button>
+    </article>
+
+    <!-- 5 -->
+    <article class="card">
+      <img src="galleta curcuma.jpg" alt="Galleta de cúrcuma">
+      <h3>Galleta con cúrcuma</h3>
+      <p class="description">Propiedades antiinflamatorias naturales. Paquete de 15.</p>
+      <p class="price">$36</p>
+      <button class="btn" onclick="addToCart('Galleta de cúrcuma', 36)">Agregar al carrito</button>
+    </article>
+
+    <!-- 6 -->
+    <article class="card">
+      <img src="galleta tomillo.jpg" alt="Galleta con tomillo">
+      <h3>Galleta con tomillo</h3>
+      <p class="description">Expectorante, facilita la expulsión de mucosidad. 15 galletas.</p>
+      <p class="price">$33</p>
+      <button class="btn" onclick="addToCart('Galleta con tomillo', 33)">Agregar al carrito</button>
+    </article>
+
+    <!-- 7 -->
+    <article class="card">
+      <img src="galleta romero.jpg" alt="Galleta con romero">
+      <h3>Galleta con romero</h3>
+      <p class="description">Apoya la memoria y alivia tensiones. 15 piezas.</p>
+      <p class="price">$32</p>
+      <button class="btn" onclick="addToCart('Galleta con romero', 32)">Agregar al carrito</button>
+    </article>
+
+  </section>
+
+  <!-- ---------- SCRIPTS ---------- -->
+  <script>
+    // Recuperar carrito (o iniciar vacío)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateBadge();
+    }
+
+    function addToCart(name, price) {
+      const item = cart.find(p => p.name === name);
+      if (item) {
+        item.quantity++;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+      saveCart();
+      alert(name + " añadido al carrito");
+    }
+
+    function updateBadge() {
+      const totalItems = cart.reduce((sum, p) => sum + p.quantity, 0);
+      document.getElementById('cart-count').textContent = totalItems;
+    }
+
+    // Actualiza contador al cargar
+    updateBadge();
+  </script>
+</body>
+</html>
